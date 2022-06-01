@@ -1,21 +1,31 @@
-import React from 'react'
-import {  Container, Menu } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { Container, Menu } from 'semantic-ui-react'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 import CartSummary from './CartSummary'
 
 export default function Navi() {
+    const [isAuthenticated, setIsAuthenticated] = useState(true)
+
+    // çıkış yapma durumunu ayarlar
+    function handleSignOut() {
+        setIsAuthenticated(false)
+    }
+
+    function handleSignIn() {
+        setIsAuthenticated(true)
+      }
+
     return (
         <div>
             <Menu inverted fixed="top" >
                 <Container>
-                <Menu.Item name='home' />
+                    <Menu.Item name='home' />
                     <Menu.Item name='messages' />
-                    
                     <Menu.Menu position='right'>
-                        <CartSummary/>
-                        <SignedOut/>
-                        <SignedIn />
+                        <CartSummary />
+                        {isAuthenticated ? <SignedIn signOut={handleSignOut}/>
+                            : <SignedOut signIn={handleSignIn} />}
                     </Menu.Menu>
                 </Container>
 
