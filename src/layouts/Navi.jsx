@@ -3,16 +3,19 @@ import { Container, Menu } from 'semantic-ui-react'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 import CartSummary from './CartSummary'
+import { useNavigate } from 'react-router'
 
 export default function Navi() {
     const [isAuthenticated, setIsAuthenticated] = useState(true)
 
+    const history = useNavigate()
     // çıkış yapma durumunu ayarlar
     function handleSignOut() {
         setIsAuthenticated(false)
+        history("/") // v6 daki kullanımı push kullanılmıyor eski versiyondaki gibi
     }
 
-    function handleSignIn() {
+    function handleSignIn() { 
         setIsAuthenticated(true)
       }
 
