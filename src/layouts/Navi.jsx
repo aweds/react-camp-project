@@ -19,7 +19,7 @@ export default function Navi() {
     function handleSignIn() {
         setIsAuthenticated(true)
     }
-
+    
     return (
         <div>
             <Menu inverted fixed="top" >

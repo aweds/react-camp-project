@@ -18,10 +18,9 @@ export default function ProductList() {
     }, [])
 
     const handleAddToCart = (product) => {
-        dispatch(addToCart(product))
+        dispatch(addToCart(product)) 
         toast.success(`${product.productName}  sepete eklendi!`)
     }
-
 
     return (
         <div>
